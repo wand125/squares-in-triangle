@@ -11,7 +11,7 @@ squares (any positions, any angles).
 
 The packings are the best known ones in Erich Friedman's Packing Center, "Squares in Triangles"
 (https://erich-friedman.github.io/packing/squintri/). The certificates show that they are optimal.
-The results are computer-assisted and have not been peer reviewed.
+The results are computer-assisted, checked by two independent checkers and in Lean 4, and have not been peer reviewed.
 
 ## Novelty
 
@@ -80,9 +80,18 @@ certificate's sha256, the exact total weight and whether it is < n. The recorded
 `tools/` has the float and exact random probes used as sanity checks (not part of the proofs).
 It also has the script that checks the n = 3 pinwheel packing.
 
+## Lean
+
+`lean/` contains Lean 4 proofs of `minSideTri 2 = 2 + 2/√3`, `minSideTri 3 = 3/2 + √3` and
+`minSideTri 4 = 3 + 2/√3`, checked by the kernel with only the standard axioms (`propext`,
+`Classical.choice`, `Quot.sound`; no `sorry`, no `native_decide`). The lower bounds use a third
+checker, proved sound in Lean once: each leaf of a box tree carries a Farkas-type certificate
+(nonnegative polynomial multipliers over Q(√3)) that the kernel checks. It covers all angles
+directly and uses neither the D3 symmetry nor Lemma P. The trusted base and the build are
+described in `lean/README.md`.
+
 ## Not done yet
 
-- A Lean formalisation of the reductions and of the checkers.
 - n = 5 and n = 6. Their best known side is the same value, 2 + 4/√3, and they are work in progress.
   s△(5) = 2 + 4/√3 would also give s△(6).
 
