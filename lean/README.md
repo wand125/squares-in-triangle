@@ -111,3 +111,61 @@ over `ℚ(√3)` (a small exact simplex). Only the exact result is written.
 | 2 | 1 (1) | 3 | 0 | < 1 s |
 | 3 | 7 (1/3 each) | 86 | 42 | ≈ 1 min |
 | 4 | 3 (1 each) | 240 | 36 | ≈ 2.5 min |
+
+## The series n = T(m−1) + 1 in a triangle of side m + 2/√3
+
+```lean
+theorem minSideTri_7  : minSideTri 7  = 4 + 2 / Real.sqrt 3   -- Sqtri/Series/M4.lean
+theorem minSideTri_11 : minSideTri 11 = 5 + 2 / Real.sqrt 3   -- Sqtri/Series/M5.lean
+```
+
+Both are kernel-checked with only the standard axioms (`AxiomsSeries.lean`,
+`logs/axioms_series.txt`).
+
+- **Upper bound.** Rows of axis-parallel unit squares: `floor(m − 2k/√3)` squares in row
+  `k` (height `[k, k+1]`), each row pushed against the left side. `axisPackB` checks in one
+  Boolean test that all squares are axis-parallel, lie in the triangle, and are pairwise
+  separated. `packs_of_axisPackB` is its soundness.
+- **Lower bound.** The same Farkas–Bernstein leaf certificates as for n = 2, 3, 4, for the lattice
+  certificates `lattice_m4.json` (6 points) and `lattice_m5.json` (10 points). Every point has
+  weight 1; the points form a triangular patch of the unit triangular lattice with side `m − 2`,
+  centred at the centroid of the container.
+  - n = 7: 1,013 leaves.
+  - n = 11: 1,863 leaves.
+  - Neither uses a symmetry reduction or a chord-pair lemma.
+
+### How the certificates are laid out
+
+Checking a whole tree with a single `decide +kernel` is very slow. So `gen/emit2.py` writes
+every leaf as its own declaration: `def lfK : Tree` and `theorem leafK : check … lfK = true`,
+20 leaves per file in `Sqtri/Data/M*/Leaves*.lean`. `All.lean` rebuilds the tree from the
+leaf names, and glues the leaf theorems along it with `check_sx`, `check_sy`, `check_su` and
+`check_lin` (`Sqtri/Check.lean`).
+
+Building the leaf files took about 60–75 s and 9 GB of memory each. Lake has no option to
+limit parallel jobs, so we built the leaf files one module at a time, at most four at once
+(`logs/series_leaf_build_tyo4.txt`; about 2.5 hours of process time for n = 7 and n = 11
+together).
+
+### Generator changes
+
+These changes affect data generation only, not the trusted base.
+
+- `gen/tree.py` tries every candidate point in turn, rather than only the heaviest.
+- The number of linear splits along one branch is configurable (`MAX_LIN`).
+- `gen/cert.py` retries the floating-point LP with other HiGHS methods before giving up. It
+  also allows more iterations in the exact simplex.
+  - Floating-point failures had marked a few boxes as uncertifiable. The certificates for those
+    boxes exist.
+- `gen/repair.py` regenerates only the failed leaves of a tree, with more depth and more linear
+  splits.
+- `gen/series.py` writes the rows packing and the theorem statement for a given `m`.
+
+### Work in progress
+
+- n = 16, 22, 29 (m = 6, 7, 8): certificates are being generated; the equalities are not yet
+  kernel-checked.
+- n = 37 (m = 9): `Sqtri/Series/M9.lean` (to be added once kernel-checked) states the lower bound
+  `∀ s, PacksTri 37 s → 9 + 2/√3 ≤ s`. At this side the rows packing holds only 36 squares, so
+  this is a lower bound, not an equality. Its certificate is being generated. Both Python
+  checkers already accept `lattice_m9.json` (see `checker2/`).

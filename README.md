@@ -1,4 +1,4 @@
-# Unit squares in an equilateral triangle: optimal packings for n = 2, 3, 4
+# Unit squares in an equilateral triangle: optimal packings for n = 2, 3, 4, 7, 11, 16, 22, 29 and a lower bound for n = 37
 
 Let s△(n) be the side of the smallest equilateral triangle that contains n non-overlapping unit
 squares (any positions, any angles).
@@ -8,21 +8,32 @@ squares (any positions, any angles).
 | 2 | 2 + 2/√3 | 3.1547 | two squares side by side on the base | the centroid, weight 1 (total 1) |
 | 3 | 3/2 + √3 | 3.2321 | "pinwheel": one square on each side | 7 points of weight 1/3 (total 7/3) |
 | 4 | 3 + 2/√3 | 4.1547 | three squares on the base, one on top | 3 points of weight 1 (total 3) and Lemma P |
+| 7 | 4 + 2/√3 | 5.1547 | rows 4 + 2 + 1 | lattice, 6 points of weight 1 |
+| 11 | 5 + 2/√3 | 6.1547 | rows 5 + 3 + 2 + 1 | lattice, 10 points |
+| 16 | 6 + 2/√3 | 7.1547 | rows 6 + 4 + 3 + 2 + 1 | lattice, 15 points |
+| 22 | 7 + 2/√3 | 8.1547 | rows 7 + 5 + 4 + 3 + 2 + 1 | lattice, 21 points |
+| 29 | 8 + 2/√3 | 9.1547 | rows 8 + 6 + 5 + 4 + 3 + 2 + 1 | lattice, 28 points |
+| 37 | ≥ 9 + 2/√3 | ≥ 10.1547 | (lower bound only) | lattice, 36 points |
 
 The packings are the best known ones in Erich Friedman's Packing Center, "Squares in Triangles"
-(https://erich-friedman.github.io/packing/squintri/). The certificates show that they are optimal.
+(https://erich-friedman.github.io/packing/squintri/). The certificates show that they are optimal. For n = 7, …, 29 the packing is rows of
+axis-parallel squares standing on the base, and the certificate is a patch of the unit triangular lattice (all weights 1, with Lemma P);
+the series and why it stops being sharp at n = 37 are described in `SERIES.md`.
 The results are computer-assisted, checked by two independent checkers and in Lean 4, and have not been peer reviewed.
 
 ## Novelty
 
 - Friedman's table lists n = 1 and n = 2 as "Trivial". The proof for n = 2 is included because it
   is the simplest instance of the method.
-- For n = 3 and n = 4 we are not aware of a previous proof of optimality. We checked:
+- For n = 3, 4, 7, 11, 16, 22 and 29 we are not aware of a previous proof of optimality. We checked:
   - Friedman's page (as of 2026-09-30), which gives the packings but no proofs or lower bounds;
   - an arXiv search of abstracts containing "equilateral triangle", "squares" and "packing";
   - general web searches.
 
   We did not find a lower bound for this container. If you know of one, please open an issue.
+- For n = 37 we prove only the lower bound s△(37) ≥ 9 + 2/√3 ≈ 10.15470. Friedman's table (as of
+  2026-10-01) lists a packing of side 10.15299 for n = 37, which is incompatible with this bound.
+  See the remarks in `certificates/n37/PROOF.md`; we do not have the coordinates of that packing.
 
 ## The method
 
@@ -57,8 +68,8 @@ handles the middle square of the base row, which holds both lower points on its 
   - Standard library only.
 - **`checker2/`** is a second checker written from the specification, the proof notes and the
   certificate format, with a different method. Its README describes the method and what its
-  author read (Independence section). It verifies the same three certificates and rejects the
-  negative controls.
+  author read (Independence section). It verifies the same certificates (n = 2, 3, 4 and the
+  series up to n = 37) and rejects the negative controls.
 
 ## Reproducing
 
@@ -67,6 +78,9 @@ handles the middle square of the base row, which holds both lower points on its 
 python checker/check.py certificates/n2/n2_cert.json --n 2
 python checker/check.py certificates/n3/n3_cert.json --n 3 --max-depth 44 --jobs 8
 python checker/check.py certificates/n4/n4_cert.json --n 4 --max-depth 32 --jobs 8
+python checker/check.py certificates/n29/n29_cert.json --n 29 --max-depth 36 --jobs 12   # likewise n7 … n22
+python checker/check.py certificates/n37/n37_cert.json --n 37 --max-depth 40 --jobs 16
+python tools/make_lattice_cert.py 9 out.json   # regenerates certificates/n37/n37_cert.json byte for byte
 cd checker && python -m pytest -q tests          # needs pytest; about 1.5 minutes
 
 # stand-alone check of the n = 2 lemma (needs sympy and mpmath)
@@ -83,7 +97,7 @@ It also has the script that checks the n = 3 pinwheel packing.
 ## Lean
 
 `lean/` contains Lean 4 proofs of `minSideTri 2 = 2 + 2/√3`, `minSideTri 3 = 3/2 + √3` and
-`minSideTri 4 = 3 + 2/√3`, checked by the kernel with only the standard axioms (`propext`,
+`minSideTri 4 = 3 + 2/√3`, and of `minSideTri 7 = 4 + 2/√3` and `minSideTri 11 = 5 + 2/√3`, checked by the kernel with only the standard axioms (`propext`,
 `Classical.choice`, `Quot.sound`; no `sorry`, no `native_decide`). The lower bounds use a third
 checker, proved sound in Lean once: each leaf of a box tree carries a Farkas-type certificate
 (nonnegative polynomial multipliers over Q(√3)) that the kernel checks. It covers all angles
@@ -92,6 +106,8 @@ described in `lean/README.md`.
 
 ## Not done yet
 
+- Lean proofs for n = 16, 22, 29 and for the n = 37 lower bound (in progress). The two Python
+  checkers already verify these certificates.
 - n = 5 and n = 6. Their best known side is the same value, 2 + 4/√3, and they are work in progress.
   s△(5) = 2 + 4/√3 would also give s△(6).
 

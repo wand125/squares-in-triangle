@@ -152,3 +152,39 @@ A failing run prints its counterexample pose in the summary.
   uses a different method (step 4 above) and nothing from that summary.
 - Shared inputs: the certificates, the claim, and the centre-scaling argument.
 - Tools: Python, gmpy2 (exact rationals), sympy (real-root isolation of rational polynomials).
+
+## The series n = 7, 11, 16, 22, 29, 37 (lattice certificates, side m + 2/√3)
+
+`series_results.json` holds, for `lattice_m4.json` … `lattice_m9.json`:
+
+- the certificate sha256 (identical to the certificate files published here);
+- the minimum captured weight;
+- the numbers of critical angles and samples;
+- the time and the verdict.
+
+The runs used `sweep.py` in this directory. It is the same sweep, plus `--stop-early`, an option
+that stops at the first sample of weight < 1; no run stopped early. As before, the sweep uses no
+symmetry and no chord-pair lemma, and checks every angle directly.
+
+| m | n | points | critical angles | min weight | time | verdict |
+|---|---|---|---|---|---|---|
+| 4 | 7 | 6 | 1,231 | 1 | 3 min (6 processes) | verified |
+| 5 | 11 | 10 | 2,311 | 1 | 7 min (6 processes) | verified |
+| 6 | 16 | 15 | 3,853 | 1 | 3 min (12 processes) | verified |
+| 7 | 22 | 21 | 5,959 | 1 | 11 min (12 processes) | verified |
+| 8 | 29 | 28 | 8,767 | 1 | 30 min (12 processes) | verified |
+| 9 | 37 | 36 | 12,157 | 1 | 92 min (12 processes) | verified |
+
+Each total weight is `n − 1 < n`.
+
+For m = 9 the result is a lower bound only: s△(37) ≥ 9 + 2/√3 ≈ 10.15470. The rows packing
+holds 36 squares at this side.
+
+### A floating-point cross-check for m = 9
+
+This check is not a proof. `area_check.py` divides θ ∈ [0°, 90°] into 9,000 steps. At each
+angle it subtracts the union of the 36 capture squares from the region of admissible centres,
+and reports the largest remaining area.
+
+The result is 1.85 × 10⁻¹⁵, at θ = 30°, where the certificate has a margin-zero contact
+(`area_check_m9.json`). No unit square avoiding all 36 points was found.

@@ -37,8 +37,8 @@ def main():
         if 'leaf' in n:
             k = len(leaves)
             stmt = (f'check L pts ({x0}) ({x1}) ({y0}) ({y1}) ({U[0]}) ({U[1]}) ({lins}) '
-                    f'{emit_tree(n)} = true')
-            leaves.append((f'leaf{k}', stmt))
+                    f'lf{k} = true')
+            leaves.append((f'leaf{k}', stmt, f'lf{k}', emit_tree(n)))
             return f'leaf{k}'
         s = n['split']
         if s == 'lin':
@@ -58,20 +58,32 @@ def main():
     roots = []
     for k, r in enumerate(d['roots']):
         U0, U1 = (q3(x) for x in r['u'])
+        start = len(leaves)
         term = walk(r['tree'], ('Q3.zero', 'L', 'Q3.zero', 'yTop'), (U0, U1), '[]')
-        roots.append((k, U0, U1, term, r['tree']))
+        counter = [start]
+
+        def skel(n):
+            if 'leaf' in n:
+                j = counter[0]; counter[0] += 1
+                return f'lf{j}'
+            s = n['split']
+            if s == 'lin':
+                return f'(.lin {aff(n["form"])} {skel(n["pos"])} {skel(n["neg"])})'
+            return f'(.s{s} ({q3(n["at"])}) {skel(n["lo"])} {skel(n["hi"])})'
+        roots.append((k, U0, U1, term, skel(r['tree'])))
     files = []
     for i in range(0, len(leaves), a.per_file):
         fname = f'Leaves{i // a.per_file}'
         files.append(fname)
         body = [f'import Sqtri.Data.{a.name}.Base', '', f'namespace {ns}', '']
-        for name, stmt in leaves[i:i + a.per_file]:
-            body += [f'theorem {name} : {stmt} := by', '  decide +kernel', '']
+        for name, stmt, dname, dterm in leaves[i:i + a.per_file]:
+            body += [f'def {dname} : Tree := {dterm}', '',
+                     f'theorem {name} : {stmt} := by', '  decide +kernel', '']
         body.append(f'end {ns}')
         (out / f'{fname}.lean').write_text('\n'.join(body) + '\n')
     top = [f'import Sqtri.Data.{a.name}.{f}' for f in files] + ['', f'namespace {ns}', '']
     for k, U0, U1, term, tree in roots:
-        top += [f'noncomputable def tree{k} : Tree := {emit_tree(tree)}', '',
+        top += [f'def tree{k} : Tree := {tree}', '',
                 f'theorem check{k} : check L pts Q3.zero L Q3.zero yTop ({U0}) ({U1}) [] tree{k} = true :=',
                 f'  {term}', '']
     top.append(f'end {ns}')

@@ -18,6 +18,8 @@ import numpy as np
 from cert import (Q3, ZERO, ONE, S3, HALF, mpq, aff, aneg, admissibility, box_forms, capture_target,
                   solve, check_identity, aeval_f)
 
+MAX_LIN = 4
+
 BREAKS = [Q3(0), Q3(2, -1), Q3(0, mpq(1, 3)), Q3(1)]   # u at theta = 0, pi/6, pi/3, pi/2
 
 
@@ -103,31 +105,26 @@ class Builder:
         else:
             common = [i for i in range(len(self.pts)) if all(self.captured_f(i, *s) for s in S)]
             common.sort(key=lambda i: -self.pts[i][1])
-            chosen, wsum = [], mpq(0)
-            for i in common:
-                if wsum >= 1:
-                    break
-                chosen.append(i); wsum += self.pts[i][1]
-            if wsum >= 1:
-                certs = {}
-                ok = True
-                for i in chosen:
+            if sum(self.pts[i][1] for i in common) >= 1:
+                # try the candidates one by one; keep those whose four certificates exist
+                chosen, certs, wsum = [], {}, mpq(0)
+                for i in common:
+                    if wsum >= 1:
+                        break
                     cs = []
                     for k in range(4):
                         self.stats['lps'] += 1
                         c = solve(self.targets[i][k], forms, U0, U1)
                         if c is None:
-                            ok = False
                             break
                         cs.append(c)
-                    if not ok:
-                        break
-                    certs[i] = cs
-                if ok:
+                    if len(cs) == 4:
+                        chosen.append(i); certs[i] = cs; wsum += self.pts[i][1]
+                if wsum >= 1:
                     self.stats['leaves'] += 1; self.stats['cover'] += 1
                     return {'leaf': 'cover', 'points': chosen, 'certs': certs}
         # Union cover: every sample is covered but no common set is.  Split by a capture side.
-        if S and len(lin) < 4:
+        if S and len(lin) < MAX_LIN:
             wt = [sum(self.pts[i][1] for i in range(len(self.pts)) if self.captured_f(i, *s)) for s in S]
             if min(wt) >= 1:
                 split = self.lin_split(S)

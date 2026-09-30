@@ -19,38 +19,6 @@ namespace SquarePacking.Tri
 
 open SquarePacking
 
-lemma sqrt3_ne : Real.sqrt 3 ≠ 0 := (Real.sqrt_pos.mpr (by norm_num)).ne'
-
-lemma two_div_sqrt3 : 2 / Real.sqrt 3 = 2 / 3 * Real.sqrt 3 := by
-  field_simp
-  rw [Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 3)]
-
-lemma yTop_val {L y : Q3} (h : y = Q3.mul L (q 0 (1/2))) : y.val = L.val * Real.sqrt 3 / 2 := by
-  subst h; simp [Q3.val_mul]; ring
-
-lemma rep0 (cx cy : Q3) : (Sq.mk cx cy (q 1 0) (q 0 0)).Rep 0 := by
-  constructor <;> simp
-
-lemma rep6 (cx cy : Q3) : (Sq.mk cx cy (q 0 (1/2)) (q (1/2) 0)).Rep (Real.pi / 6) := by
-  constructor
-  · simp [Real.cos_pi_div_six]; ring
-  · simp [Real.sin_pi_div_six]
-
-lemma rep3 (cx cy : Q3) : (Sq.mk cx cy (q (1/2) 0) (q 0 (1/2))).Rep (Real.pi / 3) := by
-  constructor
-  · simp [Real.cos_pi_div_three]
-  · simp [Real.sin_pi_div_three]; ring
-
-/-- A packing from a list of exactly checked squares. -/
-theorem packs_of_squares (n : ℕ) (L : Q3) (s : Fin n → Sq) (θ : Fin n → ℝ)
-    (hr : ∀ i, (s i).Rep (θ i)) (hin : ∀ i, inTriB L (s i) = true)
-    (hsep : ∀ i j, i < j → sepB (s i) (s j) = true) : PacksTri n L.val := by
-  refine ⟨fun i => (s i).c, θ, fun i => inTriB_sound L (s i) (θ i) (hr i) (hin i), ?_⟩
-  intro i j hij
-  rcases lt_or_gt_of_ne hij with h | h
-  · exact sepB_sound _ _ _ _ (hr i) (hr j) (hsep i j h)
-  · exact (sepB_sound _ _ _ _ (hr j) (hr i) (hsep j i h)).symm
-
 /-! ## n = 2 -/
 
 def sq2 : Fin 2 → Sq := ![⟨q (1/2) (1/3), q (1/2) 0, q 1 0, q 0 0⟩, ⟨q (3/2) (1/3), q (1/2) 0, q 1 0, q 0 0⟩]

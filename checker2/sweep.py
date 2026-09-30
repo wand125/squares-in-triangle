@@ -461,12 +461,18 @@ def verify_witness(L, pts, u, v, d, max_halvings=200):
     return None
 
 
+def _check_idx(args):
+    k, *rest = args
+    return k, check_at(*rest)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('cert')
     ap.add_argument('--n', type=int, help='number of squares; report whether the total weight is < n')
     ap.add_argument('--jobs', type=int, default=1)
     ap.add_argument('--out', help='write the JSON summary here')
+    ap.add_argument('--stop-early', action='store_true', help='stop at the first sample with weight < 1 (the run then only shows failure)')
     a = ap.parse_args(argv)
     t0 = time.time()
     cert, L, pts, sha = load(a.cert)
@@ -483,7 +489,19 @@ def main(argv=None):
     if a.jobs > 1:
         from multiprocessing import Pool
         with Pool(a.jobs) as pool:
-            results = pool.starmap(check_at, [(lines, nadm, weights, u) for u in samples], chunksize=1)
+            if a.stop_early:
+                results, done = [None] * len(samples), []
+                it = pool.imap_unordered(_check_idx, [(k, lines, nadm, weights, u) for k, u in enumerate(samples)])
+                for k, r in it:
+                    results[k] = r
+                    if r[0] < 1:
+                        pool.terminate()
+                        break
+                keep = [k for k in range(len(samples)) if results[k] is not None]
+                samples = [samples[k] for k in keep]
+                results = [results[k] for k in keep]
+            else:
+                results = pool.starmap(check_at, [(lines, nadm, weights, u) for u in samples], chunksize=1)
     else:
         results = [check_at(lines, nadm, weights, u) for u in samples]
     worst = min(r[0] for r in results)

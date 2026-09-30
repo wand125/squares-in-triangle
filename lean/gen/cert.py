@@ -183,8 +183,12 @@ def solve(target, forms, U0, U1, dmax=4):
     cscale = np.maximum(np.abs(Af).max(axis=0), 1e-300)
     Af = Af / cscale[None, :]
     scale = np.maximum(np.abs(Af).max(axis=1), 1e-300)
-    res = linprog(np.zeros(n), A_eq=Af / scale[:, None], b_eq=bf / scale, bounds=[(0, None)] * n,
-                  method='highs')
+    res = None
+    for method in ('highs', 'highs-ds', 'highs-ipm'):
+        res = linprog(np.zeros(n), A_eq=Af / scale[:, None], b_eq=bf / scale, bounds=[(0, None)] * n,
+                      method=method)
+        if res.status in (0, 2):
+            break
     if res.status == 2:
         return None
     if res.status != 0:
@@ -225,7 +229,7 @@ def exact_feasible(A, b):
                 for j in range(N + 1):
                     z[j] = z[j] + rows[r][j]
         return z   # maximise sum over non-artificial = reduce artificials
-    for _ in range(10000):
+    for _ in range(200000):
         z = reduced()
         enter = next((j for j in range(n) if z[j].sign() > 0 and j not in basis), None)
         if enter is None:
