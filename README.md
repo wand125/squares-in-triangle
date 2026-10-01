@@ -98,7 +98,7 @@ It also has the script that checks the n = 3 pinwheel packing.
 
 `lean/` contains Lean 4 proofs of
 - `minSideTri n` for n = 2, 3, 4: `2 + 2/√3`, `3/2 + √3`, `3 + 2/√3`;
-- `minSideTri n` for n = 7, 11, 16: `4 + 2/√3`, `5 + 2/√3`, `6 + 2/√3`;
+- `minSideTri n` for n = 7, 11, 16, 22, 29: `m + 2/√3` for m = 4, …, 8;
 - the n = 37 lower bound `∀ s, PacksTri 37 s → 9 + 2/√3 ≤ s`.
 
 All are checked by the kernel with only the standard axioms (`propext`,
@@ -110,8 +110,6 @@ described in `lean/README.md`.
 
 ## Not done yet
 
-- Lean proofs for n = 22 and n = 29 (in progress). The two Python checkers already verify these
-  certificates.
 - n = 5 and n = 6. Their best known side is the same value, 2 + 4/√3, and they are work in progress.
   s△(5) = 2 + 4/√3 would also give s△(6).
 

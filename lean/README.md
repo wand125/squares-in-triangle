@@ -1,4 +1,4 @@
-# Lean 4 proofs: unit squares in an equilateral triangle, n = 2, 3, 4, 7, 11, 16, and a lower bound for n = 37
+# Lean 4 proofs: unit squares in an equilateral triangle, n = 2, 3, 4, 7, 11, 16, 22, 29, and a lower bound for n = 37
 
 Kernel-checked proofs of
 
@@ -85,8 +85,8 @@ Lean 4.33.1 and Mathlib v4.33.1 (`lean-toolchain`, `lake-manifest.json`).
 
 ```sh
 lake exe cache get                     # Mathlib oleans
-python3 scripts/fetch_data.py M6 M9    # the large certificate data, checked against data/MANIFEST-*.txt
-for d in N2 N3 N4 M4 M5 M6 M9; do      # leaf files, at most 4 Lean processes (about 9 GB each)
+python3 scripts/fetch_data.py M6 M7 M8 M9   # the large certificate data, checked against data/MANIFEST-*.txt
+for d in N2 N3 N4 M4 M5 M6 M7 M8 M9; do      # leaf files, at most 4 Lean processes (about 9 GB each)
   scripts/build_data.sh $d 4
 done
 lake build                             # everything else, and the theorems
@@ -94,10 +94,14 @@ lake env lean Axioms.lean
 lake env lean AxiomsSeries.lean
 ```
 
-A full build with all data takes about 4 hours on a 16-vCPU machine and about 22 GB of disk (Mathlib included).
+A full build with the data of n = 16 and n = 37 took about 4 hours on a 16-vCPU machine and
+about 22 GB of disk (Mathlib included). The data of n = 22 and n = 29 adds about 2.5 hours, and
+up to about 8 GB of build output each. With little disk, check one theorem at a time: for
+example `scripts/build_data.sh M8 4` and then `lake build Sqtri.Series.M8`. Afterwards,
+`.lake/build/{lib/lean,ir}/Sqtri/Data/M8` can be deleted before the next dataset.
 
-The data for n = 16 and n = 37 (`Sqtri/Data/M6/`, `Sqtri/Data/M9/`) is too large for the
-repository. It is published as the release assets `tri-lean-M6.tar.xz` and `tri-lean-M9.tar.xz`
+The data for n = 16, 22, 29 and 37 (`Sqtri/Data/M6/` … `Sqtri/Data/M9/`) is too large for the
+repository. It is published as the release assets `tri-lean-M6.tar.xz` … `tri-lean-M9.tar.xz`
 (release `lean-data-v1`), with `SHA256SUMS`.
 
 `scripts/fetch_data.py` (Python standard library only) does the following:
@@ -140,13 +144,15 @@ over `ℚ(√3)` (a small exact simplex). Only the exact result is written.
 theorem minSideTri_7   : minSideTri 7  = 4 + 2 / Real.sqrt 3          -- Sqtri/Series/M4.lean
 theorem minSideTri_11  : minSideTri 11 = 5 + 2 / Real.sqrt 3          -- Sqtri/Series/M5.lean
 theorem minSideTri_16  : minSideTri 16 = 6 + 2 / Real.sqrt 3          -- Sqtri/Series/M6.lean
+theorem minSideTri_22  : minSideTri 22 = 7 + 2 / Real.sqrt 3          -- Sqtri/Series/M7.lean
+theorem minSideTri_29  : minSideTri 29 = 8 + 2 / Real.sqrt 3          -- Sqtri/Series/M8.lean
 theorem le_of_packs_37 : ∀ s, PacksTri 37 s → 9 + 2 / Real.sqrt 3 ≤ s  -- Sqtri/Series/M9.lean
 ```
 
-All four are kernel-checked with only the standard axioms (`AxiomsSeries.lean`,
+All six are kernel-checked with only the standard axioms (`AxiomsSeries.lean`,
 `logs/axioms_series.txt`).
 
-- **Upper bound (n = 7, 11, 16).** Rows of axis-parallel unit squares: `floor(m − 2k/√3)`
+- **Upper bound (n = 7, 11, 16, 22, 29).** Rows of axis-parallel unit squares: `floor(m − 2k/√3)`
   squares in row `k` (height `[k, k+1]`), each row pushed against the left side. `axisPackB`
   checks in one Boolean test that all squares are axis-parallel, lie in the triangle, and are
   pairwise separated. `packs_of_axisPackB` is its soundness.
@@ -154,7 +160,7 @@ All four are kernel-checked with only the standard axioms (`AxiomsSeries.lean`,
   The theorem says that 37 unit squares do not fit in an equilateral triangle of side less than
   9 + 2/√3 ≈ 10.15470.
 - **Lower bounds.** The same Farkas–Bernstein leaf certificates as for n = 2, 3, 4, for the
-  lattice certificates `lattice_m{4,5,6,9}.json`. Every point has weight 1; the points form a
+  lattice certificates `lattice_m{4,…,9}.json`. Every point has weight 1; the points form a
   triangular patch of the unit triangular lattice with side `m − 2`, centred at the centroid of
   the container. None of them uses a symmetry reduction or a chord-pair lemma.
 
@@ -163,6 +169,8 @@ All four are kernel-checked with only the standard axioms (`AxiomsSeries.lean`,
 | n = 7 | `lattice_m4.json` | 6 | 1,013 | 51 | in the repository |
 | n = 11 | `lattice_m5.json` | 10 | 1,863 | 94 | in the repository |
 | n = 16 | `lattice_m6.json` | 15 | 3,753 | 188 | release asset (4.1 MB) |
+| n = 22 | `lattice_m7.json` | 21 | 6,884 | 345 | release asset (9.2 MB) |
+| n = 29 | `lattice_m8.json` | 28 | 8,661 | 434 | release asset (10.4 MB) |
 | n = 37 | `lattice_m9.json` | 36 | 9,776 | 489 | release asset (12.2 MB) |
 
 ### How the certificates are laid out
@@ -192,13 +200,16 @@ These changes affect data generation only, not the trusted base.
 - `gen/cert.py`: when the floating-point LP fails numerically, the exact simplex over Q(√3) is
   run on the whole LP, with a larger iteration limit.
   - An infeasible verdict of a fallback floating-point method is never trusted.
+- `gen/cert.py` compares the coefficients of the identity in the rescaled variable
+  `t = (u − U0)/(U1 − U0)` instead of `u`.
+  - On very narrow angle bins, the basis `(u − U0)^i (U1 − u)^(d−i)` written in powers of `u`
+    is badly conditioned, and the floating-point LP wrongly reported some feasible boxes as
+    infeasible (n = 29).
+  - A linear change of variable keeps every identity, so the multipliers and the Lean check are
+    unchanged.
 - `gen/repair.py` regenerates only the failed leaves of a tree, with more depth and more linear
-  splits. The n = 37 tree was generated with `--max-depth 32` and then repaired with
-  `--extra-depth 8 --max-lin 8`.
+  splits. The settings of each dataset are in the header of its `data/MANIFEST-*.txt`.
+  - n = 37: `--max-depth 32`, then a repair with `--extra-depth 8 --max-lin 8`.
+  - n = 22: a second repair with `--extra-depth 12 --max-lin 12`.
+  - n = 29: a repair with the rescaled LP.
 - `gen/series.py` writes the rows packing and the theorem statement for a given `m`.
-
-### Work in progress
-
-- n = 22 and n = 29 (m = 7, 8): their trees are being repaired, and the equalities are not yet
-  kernel-checked. Both Python checkers already accept `lattice_m7.json` and `lattice_m8.json`
-  (see `checker2/`).

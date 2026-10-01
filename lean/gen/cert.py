@@ -171,12 +171,29 @@ def vec(f, dmax):
     return v
 
 
+def shift(p, U0, w):
+    """p(U0 + w t) as a polynomial in t.  A linear change of variable keeps every identity, so the
+    coefficients are compared in t: on a narrow bin the monomial basis in u is badly conditioned."""
+    r = []
+    lin = [U0, w]
+    for c in reversed(p):
+        r = padd(pmul(r, lin), [c])
+    return r
+
+
+def tvec(f, dmax, U0, w):
+    return vec({k: shift(f[k], U0, w) for k in ('1', 'x', 'y')}, dmax)
+
+
 def solve(target, forms, U0, U1, dmax=4):
     """Find nonnegative coefficients with sum coef * column == target exactly.
     Returns a list of (tag, d, i, coef) or None."""
     cols = columns(forms, U0, U1, dmax)
-    A = [vec(c[3], dmax) for c in cols]
-    b = vec(target, dmax)
+    w = U1 - U0
+    if w.is_zero():
+        w = ONE
+    A = [tvec(c[3], dmax, U0, w) for c in cols]
+    b = tvec(target, dmax, U0, w)
     m, n = len(b), len(cols)
     Af = np.array([[float(A[j][r]) for j in range(n)] for r in range(m)])
     bf = np.array([float(x) for x in b])
