@@ -1,4 +1,4 @@
-# Lean 4 proofs: unit squares in an equilateral triangle, n = 2, 3, 4
+# Lean 4 proofs: unit squares in an equilateral triangle, n = 2, 3, 4, 7, 11, 16, and a lower bound for n = 37
 
 Kernel-checked proofs of
 
@@ -84,10 +84,32 @@ a separating direction; the squares may touch.
 Lean 4.33.1 and Mathlib v4.33.1 (`lean-toolchain`, `lake-manifest.json`).
 
 ```sh
-lake exe cache get      # Mathlib oleans
-lake build              # checks everything, including the kernel certificates
+lake exe cache get                     # Mathlib oleans
+python3 scripts/fetch_data.py M6 M9    # the large certificate data, checked against data/MANIFEST-*.txt
+for d in N2 N3 N4 M4 M5 M6 M9; do      # leaf files, at most 4 Lean processes (about 9 GB each)
+  scripts/build_data.sh $d 4
+done
+lake build                             # everything else, and the theorems
 lake env lean Axioms.lean
+lake env lean AxiomsSeries.lean
 ```
+
+A full build with all data takes about 4 hours on a 16-vCPU machine and about 22 GB of disk (Mathlib included).
+
+The data for n = 16 and n = 37 (`Sqtri/Data/M6/`, `Sqtri/Data/M9/`) is too large for the
+repository. It is published as the release assets `tri-lean-M6.tar.xz` and `tri-lean-M9.tar.xz`
+(release `lean-data-v1`), with `SHA256SUMS`.
+
+`scripts/fetch_data.py` (Python standard library only) does the following:
+1. downloads the archives and `SHA256SUMS`;
+2. checks each archive against `SHA256SUMS`;
+3. extracts only regular files of `Sqtri/Data/<dataset>/`;
+4. checks the exact file set and every sha256 against `data/MANIFEST-<dataset>.txt`;
+5. only then puts the directory in place.
+
+The header of each MANIFEST records the certificate's sha256 and the generator settings.
+The data can also be regenerated with `gen/` (see below). The kernel is the only trusted
+part: the scripts only make sure that the files you build are the published ones.
 
 ## Regenerating the certificates
 
@@ -101,7 +123,7 @@ uv venv .venv && uv pip install --python .venv/bin/python gmpy2 numpy scipy
 A clean build of this project (Mathlib from the cache) took 9 minutes of wall time on a
 16-vCPU Linux machine. The kernel certificates account for most of it: about 12 CPU-minutes for
 n = 3 and 26 CPU-minutes for n = 4. The largest single process used 8.8 GB
-(`logs/build_clean_tyo4.log`, `logs/axioms.txt`).
+(`logs/build_clean.log`, `logs/axioms.txt`).
 
 The generator searches for multipliers with a floating-point LP (HiGHS) and then solves exactly
 over `ℚ(√3)` (a small exact simplex). Only the exact result is written.
@@ -115,24 +137,33 @@ over `ℚ(√3)` (a small exact simplex). Only the exact result is written.
 ## The series n = T(m−1) + 1 in a triangle of side m + 2/√3
 
 ```lean
-theorem minSideTri_7  : minSideTri 7  = 4 + 2 / Real.sqrt 3   -- Sqtri/Series/M4.lean
-theorem minSideTri_11 : minSideTri 11 = 5 + 2 / Real.sqrt 3   -- Sqtri/Series/M5.lean
+theorem minSideTri_7   : minSideTri 7  = 4 + 2 / Real.sqrt 3          -- Sqtri/Series/M4.lean
+theorem minSideTri_11  : minSideTri 11 = 5 + 2 / Real.sqrt 3          -- Sqtri/Series/M5.lean
+theorem minSideTri_16  : minSideTri 16 = 6 + 2 / Real.sqrt 3          -- Sqtri/Series/M6.lean
+theorem le_of_packs_37 : ∀ s, PacksTri 37 s → 9 + 2 / Real.sqrt 3 ≤ s  -- Sqtri/Series/M9.lean
 ```
 
-Both are kernel-checked with only the standard axioms (`AxiomsSeries.lean`,
+All four are kernel-checked with only the standard axioms (`AxiomsSeries.lean`,
 `logs/axioms_series.txt`).
 
-- **Upper bound.** Rows of axis-parallel unit squares: `floor(m − 2k/√3)` squares in row
-  `k` (height `[k, k+1]`), each row pushed against the left side. `axisPackB` checks in one
-  Boolean test that all squares are axis-parallel, lie in the triangle, and are pairwise
-  separated. `packs_of_axisPackB` is its soundness.
-- **Lower bound.** The same Farkas–Bernstein leaf certificates as for n = 2, 3, 4, for the lattice
-  certificates `lattice_m4.json` (6 points) and `lattice_m5.json` (10 points). Every point has
-  weight 1; the points form a triangular patch of the unit triangular lattice with side `m − 2`,
-  centred at the centroid of the container.
-  - n = 7: 1,013 leaves.
-  - n = 11: 1,863 leaves.
-  - Neither uses a symmetry reduction or a chord-pair lemma.
+- **Upper bound (n = 7, 11, 16).** Rows of axis-parallel unit squares: `floor(m − 2k/√3)`
+  squares in row `k` (height `[k, k+1]`), each row pushed against the left side. `axisPackB`
+  checks in one Boolean test that all squares are axis-parallel, lie in the triangle, and are
+  pairwise separated. `packs_of_axisPackB` is its soundness.
+- **n = 37 is a lower bound only.** At side 9 + 2/√3 the rows packing holds 36 squares, not 37.
+  The theorem says that 37 unit squares do not fit in an equilateral triangle of side less than
+  9 + 2/√3 ≈ 10.15470.
+- **Lower bounds.** The same Farkas–Bernstein leaf certificates as for n = 2, 3, 4, for the
+  lattice certificates `lattice_m{4,5,6,9}.json`. Every point has weight 1; the points form a
+  triangular patch of the unit triangular lattice with side `m − 2`, centred at the centroid of
+  the container. None of them uses a symmetry reduction or a chord-pair lemma.
+
+| theorem | certificate | points | leaves | leaf files | data |
+|---|---|---|---|---|---|
+| n = 7 | `lattice_m4.json` | 6 | 1,013 | 51 | in the repository |
+| n = 11 | `lattice_m5.json` | 10 | 1,863 | 94 | in the repository |
+| n = 16 | `lattice_m6.json` | 15 | 3,753 | 188 | release asset (4.1 MB) |
+| n = 37 | `lattice_m9.json` | 36 | 9,776 | 489 | release asset (12.2 MB) |
 
 ### How the certificates are laid out
 
@@ -142,10 +173,12 @@ every leaf as its own declaration: `def lfK : Tree` and `theorem leafK : check �
 leaf names, and glues the leaf theorems along it with `check_sx`, `check_sy`, `check_su` and
 `check_lin` (`Sqtri/Check.lean`).
 
-Building the leaf files took about 60–75 s and 9 GB of memory each. Lake has no option to
-limit parallel jobs, so we built the leaf files one module at a time, at most four at once
-(`logs/series_leaf_build_tyo4.txt`; about 2.5 hours of process time for n = 7 and n = 11
-together).
+Building the leaf files took about 60–90 s and about 9 GB of memory each. Lake has no option to
+limit parallel jobs, so `scripts/build_data.sh` builds the leaf modules one Lake invocation each,
+at most four at once. On a 16-vCPU machine the n = 37 leaves took about 10.9 hours of process time
+(about 2.7 hours of wall time), and the final assembly took 11 minutes. Large trees also need
+`set_option maxHeartbeats 0` and a `noncomputable` tree skeleton in `All.lean`; `gen/emit2.py`
+writes both.
 
 ### Generator changes
 
@@ -153,19 +186,19 @@ These changes affect data generation only, not the trusted base.
 
 - `gen/tree.py` tries every candidate point in turn, rather than only the heaviest.
 - The number of linear splits along one branch is configurable (`MAX_LIN`).
-- `gen/cert.py` retries the floating-point LP with other HiGHS methods before giving up. It
-  also allows more iterations in the exact simplex.
-  - Floating-point failures had marked a few boxes as uncertifiable. The certificates for those
-    boxes exist.
+- Some regions have no floating-point sample: very thin regions between two nearly coincident
+  split lines, or a region on a line `f = 0`. For these, the candidate points are chosen from
+  samples taken without the split forms. The split forms stay in the LP as hypotheses.
+- `gen/cert.py`: when the floating-point LP fails numerically, the exact simplex over Q(√3) is
+  run on the whole LP, with a larger iteration limit.
+  - An infeasible verdict of a fallback floating-point method is never trusted.
 - `gen/repair.py` regenerates only the failed leaves of a tree, with more depth and more linear
-  splits.
+  splits. The n = 37 tree was generated with `--max-depth 32` and then repaired with
+  `--extra-depth 8 --max-lin 8`.
 - `gen/series.py` writes the rows packing and the theorem statement for a given `m`.
 
 ### Work in progress
 
-- n = 16, 22, 29 (m = 6, 7, 8): certificates are being generated; the equalities are not yet
-  kernel-checked.
-- n = 37 (m = 9): `Sqtri/Series/M9.lean` (to be added once kernel-checked) states the lower bound
-  `∀ s, PacksTri 37 s → 9 + 2/√3 ≤ s`. At this side the rows packing holds only 36 squares, so
-  this is a lower bound, not an equality. Its certificate is being generated. Both Python
-  checkers already accept `lattice_m9.json` (see `checker2/`).
+- n = 22 and n = 29 (m = 7, 8): their trees are being repaired, and the equalities are not yet
+  kernel-checked. Both Python checkers already accept `lattice_m7.json` and `lattice_m8.json`
+  (see `checker2/`).

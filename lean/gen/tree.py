@@ -102,7 +102,12 @@ class Builder:
             if c is not None:
                 self.stats['leaves'] += 1; self.stats['empty'] += 1
                 return {'leaf': 'empty', 'cert': c}
-        else:
+            # A very thin region (e.g. between two nearly coincident split lines, or on a line
+            # f = 0) may have no float sample.  Choose candidates from samples taken without the
+            # split forms; the split forms stay in the LP as hypotheses.
+            if lin:
+                S = samples(self.adm_f, fb, float(U0), float(U1))
+        if S:
             common = [i for i in range(len(self.pts)) if all(self.captured_f(i, *s) for s in S)]
             common.sort(key=lambda i: -self.pts[i][1])
             if sum(self.pts[i][1] for i in common) >= 1:
@@ -127,7 +132,7 @@ class Builder:
         if S and len(lin) < MAX_LIN:
             wt = [sum(self.pts[i][1] for i in range(len(self.pts)) if self.captured_f(i, *s)) for s in S]
             if min(wt) >= 1:
-                split = self.lin_split(S)
+                split = self.lin_split(S, lin)
                 if split is not None:
                     f = split
                     return {'split': 'lin', 'form': f,
@@ -155,7 +160,11 @@ def _cover_ok(self, S):
     return sum(self.pts[i][1] for i in common) >= 1
 
 
-def _lin_split(self, S):
+def _same_form(f, g):
+    return all(f[k] == g[k] for k in ('1', 'x', 'y'))
+
+
+def _lin_split(self, S, lin=()):
     for i in range(len(self.pts)):
         for k in range(4):
             f = self.targets_f[i][k]

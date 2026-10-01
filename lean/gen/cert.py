@@ -183,12 +183,8 @@ def solve(target, forms, U0, U1, dmax=4):
     cscale = np.maximum(np.abs(Af).max(axis=0), 1e-300)
     Af = Af / cscale[None, :]
     scale = np.maximum(np.abs(Af).max(axis=1), 1e-300)
-    res = None
-    for method in ('highs', 'highs-ds', 'highs-ipm'):
-        res = linprog(np.zeros(n), A_eq=Af / scale[:, None], b_eq=bf / scale, bounds=[(0, None)] * n,
-                      method=method)
-        if res.status in (0, 2):
-            break
+    res = linprog(np.zeros(n), A_eq=Af / scale[:, None], b_eq=bf / scale, bounds=[(0, None)] * n,
+                  method='highs')
     if res.status == 2:
         return None
     if res.status != 0:

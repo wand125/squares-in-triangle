@@ -96,8 +96,12 @@ It also has the script that checks the n = 3 pinwheel packing.
 
 ## Lean
 
-`lean/` contains Lean 4 proofs of `minSideTri 2 = 2 + 2/√3`, `minSideTri 3 = 3/2 + √3` and
-`minSideTri 4 = 3 + 2/√3`, and of `minSideTri 7 = 4 + 2/√3` and `minSideTri 11 = 5 + 2/√3`, checked by the kernel with only the standard axioms (`propext`,
+`lean/` contains Lean 4 proofs of
+- `minSideTri n` for n = 2, 3, 4: `2 + 2/√3`, `3/2 + √3`, `3 + 2/√3`;
+- `minSideTri n` for n = 7, 11, 16: `4 + 2/√3`, `5 + 2/√3`, `6 + 2/√3`;
+- the n = 37 lower bound `∀ s, PacksTri 37 s → 9 + 2/√3 ≤ s`.
+
+All are checked by the kernel with only the standard axioms (`propext`,
 `Classical.choice`, `Quot.sound`; no `sorry`, no `native_decide`). The lower bounds use a third
 checker, proved sound in Lean once: each leaf of a box tree carries a Farkas-type certificate
 (nonnegative polynomial multipliers over Q(√3)) that the kernel checks. It covers all angles
@@ -106,8 +110,8 @@ described in `lean/README.md`.
 
 ## Not done yet
 
-- Lean proofs for n = 16, 22, 29 and for the n = 37 lower bound (in progress). The two Python
-  checkers already verify these certificates.
+- Lean proofs for n = 22 and n = 29 (in progress). The two Python checkers already verify these
+  certificates.
 - n = 5 and n = 6. Their best known side is the same value, 2 + 4/√3, and they are work in progress.
   s△(5) = 2 + 4/√3 would also give s△(6).
 

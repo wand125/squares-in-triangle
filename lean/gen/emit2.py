@@ -81,9 +81,11 @@ def main():
                      f'theorem {name} : {stmt} := by', '  decide +kernel', '']
         body.append(f'end {ns}')
         (out / f'{fname}.lean').write_text('\n'.join(body) + '\n')
-    top = [f'import Sqtri.Data.{a.name}.{f}' for f in files] + ['', f'namespace {ns}', '']
+    top = [f'import Sqtri.Data.{a.name}.{f}' for f in files] + [
+        '', '-- The tree skeletons and their glue proofs are large terms; elaboration needs more time.',
+        'set_option maxHeartbeats 0', '', f'namespace {ns}', '']
     for k, U0, U1, term, tree in roots:
-        top += [f'def tree{k} : Tree := {tree}', '',
+        top += [f'noncomputable def tree{k} : Tree := {tree}', '',
                 f'theorem check{k} : check L pts Q3.zero L Q3.zero yTop ({U0}) ({U1}) [] tree{k} = true :=',
                 f'  {term}', '']
     top.append(f'end {ns}')
