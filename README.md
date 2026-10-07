@@ -1,3 +1,5 @@
+> **Moved:** this repository is now part of [wand125/square-packing](https://github.com/wand125/square-packing/tree/main/problems/triangle) (`problems/triangle/`). This copy is archived; every path is mapped in `MOVED.json`, and old links, commits and releases keep working.
+
 # Unit squares in an equilateral triangle: optimal packings for n = 2, 3, 4, 7, 11, 16, 22, 29 and a lower bound for n = 37
 
 Let s△(n) be the side of the smallest equilateral triangle that contains n non-overlapping unit

@@ -1,0 +1,1244 @@
+{
+ "schema": "moved/v1",
+ "old_repository": "wand125/squares-in-triangle",
+ "old_head": "78a103b99f411024678bfc47861ec158bb0c7ceb",
+ "new_repository": "wand125/square-packing",
+ "note": "Every path of the old repository at old_head and where it lives now: 'new' is a path in the new repository's git tree (documents, code, metadata); 'new_release' is a release asset (certificate data) with the path inside it. The old repository is archived (read-only); its history and releases remain available.",
+ "paths": [
+  {
+   "old": "certificates/n11/PROOF.md",
+   "new": "problems/triangle/certificates/n11/PROOF.md"
+  },
+  {
+   "old": "certificates/n11/check_record.json",
+   "new": "problems/triangle/certificates/n11/check_record.json"
+  },
+  {
+   "old": "certificates/n11/n11_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n11.tar.gz"
+    ],
+    "sha256": [
+     "014169ffdc62798007780a72a428166c98b161b8d4469ba6fb002ffbe2fc4f13"
+    ],
+    "path_inside": "certificates/n11/n11_cert.json",
+    "unpack": "tar xzf certificates__n11.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n16/PROOF.md",
+   "new": "problems/triangle/certificates/n16/PROOF.md"
+  },
+  {
+   "old": "certificates/n16/check_record.json",
+   "new": "problems/triangle/certificates/n16/check_record.json"
+  },
+  {
+   "old": "certificates/n16/n16_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n16.tar.gz"
+    ],
+    "sha256": [
+     "4742926ea3070b22f37a1dbbc34064f4f4ad3e54a88e8c27be48f18fa29c635b"
+    ],
+    "path_inside": "certificates/n16/n16_cert.json",
+    "unpack": "tar xzf certificates__n16.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n2/PROOF.md",
+   "new": "problems/triangle/certificates/n2/PROOF.md"
+  },
+  {
+   "old": "certificates/n2/check_n2.out",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n2.tar.gz"
+    ],
+    "sha256": [
+     "e62226509bacd04cfcb2cc302e64cdae2a91677ad1c6485a571f30d9f18d2f93"
+    ],
+    "path_inside": "certificates/n2/check_n2.out",
+    "unpack": "tar xzf certificates__n2.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n2/check_n2.py",
+   "new": "problems/triangle/certificates/n2/check_n2.py"
+  },
+  {
+   "old": "certificates/n2/n2_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n2.tar.gz"
+    ],
+    "sha256": [
+     "e62226509bacd04cfcb2cc302e64cdae2a91677ad1c6485a571f30d9f18d2f93"
+    ],
+    "path_inside": "certificates/n2/n2_cert.json",
+    "unpack": "tar xzf certificates__n2.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n22/PROOF.md",
+   "new": "problems/triangle/certificates/n22/PROOF.md"
+  },
+  {
+   "old": "certificates/n22/check_record.json",
+   "new": "problems/triangle/certificates/n22/check_record.json"
+  },
+  {
+   "old": "certificates/n22/n22_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n22.tar.gz"
+    ],
+    "sha256": [
+     "74b887bfe87f5d9466285995e19be3dd4e1ff09a64c0a1830b41607daa3e463d"
+    ],
+    "path_inside": "certificates/n22/n22_cert.json",
+    "unpack": "tar xzf certificates__n22.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n29/PROOF.md",
+   "new": "problems/triangle/certificates/n29/PROOF.md"
+  },
+  {
+   "old": "certificates/n29/check_record.json",
+   "new": "problems/triangle/certificates/n29/check_record.json"
+  },
+  {
+   "old": "certificates/n29/n29_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n29.tar.gz"
+    ],
+    "sha256": [
+     "2753b4b7c9a1148c7dc0ca373c3bed9e3aacacc7d8b05cb29ecdc3a74b5ec5f7"
+    ],
+    "path_inside": "certificates/n29/n29_cert.json",
+    "unpack": "tar xzf certificates__n29.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n3/PROOF.md",
+   "new": "problems/triangle/certificates/n3/PROOF.md"
+  },
+  {
+   "old": "certificates/n3/check_record.json",
+   "new": "problems/triangle/certificates/n3/check_record.json"
+  },
+  {
+   "old": "certificates/n3/n3_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n3.tar.gz"
+    ],
+    "sha256": [
+     "8c85d9030431d47c3023099a1c73e2981f869bbfdd760e3a12e1e79e7eba17ea"
+    ],
+    "path_inside": "certificates/n3/n3_cert.json",
+    "unpack": "tar xzf certificates__n3.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n37/PROOF.md",
+   "new": "problems/triangle/certificates/n37/PROOF.md"
+  },
+  {
+   "old": "certificates/n37/check_record.json",
+   "new": "problems/triangle/certificates/n37/check_record.json"
+  },
+  {
+   "old": "certificates/n37/n37_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n37.tar.gz"
+    ],
+    "sha256": [
+     "5c6052f773626195f4a2c3b1a6363bce0f84186d157cc988bcfeca1b2ed94736"
+    ],
+    "path_inside": "certificates/n37/n37_cert.json",
+    "unpack": "tar xzf certificates__n37.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n4/PROOF.md",
+   "new": "problems/triangle/certificates/n4/PROOF.md"
+  },
+  {
+   "old": "certificates/n4/check_record.json",
+   "new": "problems/triangle/certificates/n4/check_record.json"
+  },
+  {
+   "old": "certificates/n4/n4_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n4.tar.gz"
+    ],
+    "sha256": [
+     "8ae667fa56dedfd89ac8dec04943562d017b566e78198da2074e2fccd007b6b7"
+    ],
+    "path_inside": "certificates/n4/n4_cert.json",
+    "unpack": "tar xzf certificates__n4.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": "certificates/n7/PROOF.md",
+   "new": "problems/triangle/certificates/n7/PROOF.md"
+  },
+  {
+   "old": "certificates/n7/check_record.json",
+   "new": "problems/triangle/certificates/n7/check_record.json"
+  },
+  {
+   "old": "certificates/n7/n7_cert.json",
+   "new": null,
+   "new_release": {
+    "tag": "triangle-v1",
+    "assets": [
+     "certificates__n7.tar.gz"
+    ],
+    "sha256": [
+     "e9f75c3135ae44ea5eb27f52cc6bfa8f22001dc1962aff17a8384b576af34e6e"
+    ],
+    "path_inside": "certificates/n7/n7_cert.json",
+    "unpack": "tar xzf certificates__n7.tar.gz -C problems/triangle"
+   }
+  },
+  {
+   "old": ".gitignore",
+   "new": "problems/triangle/.gitignore"
+  },
+  {
+   "old": "LICENSE",
+   "new": "problems/triangle/LICENSE"
+  },
+  {
+   "old": "README.md",
+   "new": "problems/triangle/README.md"
+  },
+  {
+   "old": "SERIES.md",
+   "new": "problems/triangle/SERIES.md"
+  },
+  {
+   "old": "checker/README.md",
+   "new": "problems/triangle/checker/README.md"
+  },
+  {
+   "old": "checker/SPEC.md",
+   "new": "problems/triangle/checker/SPEC.md"
+  },
+  {
+   "old": "checker/check.py",
+   "new": "problems/triangle/checker/check.py"
+  },
+  {
+   "old": "checker/examples/n2_centroid.json",
+   "new": "problems/triangle/checker/examples/n2_centroid.json"
+  },
+  {
+   "old": "checker/examples/n3_cert.json",
+   "new": "problems/triangle/checker/examples/n3_cert.json"
+  },
+  {
+   "old": "checker/examples/n4_cert.json",
+   "new": "problems/triangle/checker/examples/n4_cert.json"
+  },
+  {
+   "old": "checker/examples/neg_n3_Lplus.json",
+   "new": "problems/triangle/checker/examples/neg_n3_Lplus.json"
+  },
+  {
+   "old": "checker/examples/neg_n4_Lplus.json",
+   "new": "problems/triangle/checker/examples/neg_n4_Lplus.json"
+  },
+  {
+   "old": "checker/poly.py",
+   "new": "problems/triangle/checker/poly.py"
+  },
+  {
+   "old": "checker/q3.py",
+   "new": "problems/triangle/checker/q3.py"
+  },
+  {
+   "old": "checker/tests/conftest.py",
+   "new": "problems/triangle/checker/tests/conftest.py"
+  },
+  {
+   "old": "checker/tests/test_check.py",
+   "new": "problems/triangle/checker/tests/test_check.py"
+  },
+  {
+   "old": "checker/tests/test_poly.py",
+   "new": "problems/triangle/checker/tests/test_poly.py"
+  },
+  {
+   "old": "checker/tests/test_q3.py",
+   "new": "problems/triangle/checker/tests/test_q3.py"
+  },
+  {
+   "old": "checker2/README.md",
+   "new": "problems/triangle/checker2/README.md"
+  },
+  {
+   "old": "checker2/area_check.py",
+   "new": "problems/triangle/checker2/area_check.py"
+  },
+  {
+   "old": "checker2/area_check_m9.json",
+   "new": "problems/triangle/checker2/area_check_m9.json"
+  },
+  {
+   "old": "checker2/controls/n2_centroid_none.json",
+   "new": "problems/triangle/checker2/controls/n2_centroid_none.json"
+  },
+  {
+   "old": "checker2/controls/neg_n2_Lplus.json",
+   "new": "problems/triangle/checker2/controls/neg_n2_Lplus.json"
+  },
+  {
+   "old": "checker2/controls/neg_n2_shift.json",
+   "new": "problems/triangle/checker2/controls/neg_n2_shift.json"
+  },
+  {
+   "old": "checker2/controls/neg_n3_Lplus.json",
+   "new": "problems/triangle/checker2/controls/neg_n3_Lplus.json"
+  },
+  {
+   "old": "checker2/controls/neg_n3_drop_centroid.json",
+   "new": "problems/triangle/checker2/controls/neg_n3_drop_centroid.json"
+  },
+  {
+   "old": "checker2/controls/neg_n3_shift.json",
+   "new": "problems/triangle/checker2/controls/neg_n3_shift.json"
+  },
+  {
+   "old": "checker2/controls/neg_n4_Lplus.json",
+   "new": "problems/triangle/checker2/controls/neg_n4_Lplus.json"
+  },
+  {
+   "old": "checker2/controls/neg_n4_shift.json",
+   "new": "problems/triangle/checker2/controls/neg_n4_shift.json"
+  },
+  {
+   "old": "checker2/controls/neg_n4_weight.json",
+   "new": "problems/triangle/checker2/controls/neg_n4_weight.json"
+  },
+  {
+   "old": "checker2/probe.py",
+   "new": "problems/triangle/checker2/probe.py"
+  },
+  {
+   "old": "checker2/q3.py",
+   "new": "problems/triangle/checker2/q3.py"
+  },
+  {
+   "old": "checker2/runs/n2.json",
+   "new": "problems/triangle/checker2/runs/n2.json"
+  },
+  {
+   "old": "checker2/runs/n3.json",
+   "new": "problems/triangle/checker2/runs/n3.json"
+  },
+  {
+   "old": "checker2/runs/n4.json",
+   "new": "problems/triangle/checker2/runs/n4.json"
+  },
+  {
+   "old": "checker2/runs/probe.jsonl",
+   "new": "problems/triangle/checker2/runs/probe.jsonl"
+  },
+  {
+   "old": "checker2/series_results.json",
+   "new": "problems/triangle/checker2/series_results.json"
+  },
+  {
+   "old": "checker2/sweep.py",
+   "new": "problems/triangle/checker2/sweep.py"
+  },
+  {
+   "old": "checker2/tests/test_sweep.py",
+   "new": "problems/triangle/checker2/tests/test_sweep.py"
+  },
+  {
+   "old": "lean/Axioms.lean",
+   "new": "lean/triangle/Axioms.lean"
+  },
+  {
+   "old": "lean/AxiomsSeries.lean",
+   "new": "lean/triangle/AxiomsSeries.lean"
+  },
+  {
+   "old": "lean/README.md",
+   "new": "lean/triangle/README.md"
+  },
+  {
+   "old": "lean/Sqtri.lean",
+   "new": "lean/triangle/Sqtri.lean"
+  },
+  {
+   "old": "lean/Sqtri/Check.lean",
+   "new": "lean/triangle/Sqtri/Check.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/All.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/All.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Base.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Base.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves0.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves0.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves1.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves1.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves10.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves10.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves11.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves11.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves12.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves12.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves13.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves13.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves14.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves14.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves15.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves15.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves16.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves16.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves17.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves17.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves18.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves18.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves19.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves19.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves2.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves2.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves20.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves20.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves21.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves21.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves22.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves22.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves23.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves23.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves24.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves24.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves25.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves25.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves26.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves26.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves27.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves27.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves28.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves28.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves29.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves29.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves3.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves3.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves30.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves30.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves31.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves31.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves32.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves32.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves33.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves33.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves34.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves34.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves35.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves35.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves36.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves36.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves37.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves37.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves38.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves38.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves39.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves39.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves4.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves4.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves40.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves40.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves41.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves41.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves42.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves42.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves43.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves43.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves44.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves44.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves45.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves45.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves46.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves46.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves47.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves47.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves48.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves48.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves49.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves49.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves5.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves5.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves50.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves50.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves6.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves6.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves7.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves7.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves8.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves8.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M4/Leaves9.lean",
+   "new": "lean/triangle/Sqtri/Data/M4/Leaves9.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/All.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/All.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Base.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Base.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves0.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves0.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves1.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves1.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves10.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves10.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves11.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves11.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves12.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves12.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves13.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves13.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves14.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves14.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves15.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves15.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves16.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves16.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves17.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves17.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves18.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves18.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves19.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves19.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves2.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves2.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves20.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves20.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves21.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves21.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves22.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves22.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves23.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves23.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves24.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves24.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves25.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves25.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves26.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves26.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves27.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves27.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves28.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves28.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves29.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves29.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves3.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves3.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves30.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves30.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves31.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves31.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves32.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves32.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves33.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves33.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves34.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves34.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves35.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves35.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves36.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves36.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves37.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves37.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves38.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves38.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves39.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves39.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves4.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves4.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves40.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves40.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves41.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves41.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves42.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves42.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves43.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves43.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves44.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves44.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves45.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves45.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves46.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves46.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves47.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves47.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves48.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves48.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves49.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves49.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves5.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves5.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves50.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves50.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves51.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves51.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves52.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves52.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves53.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves53.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves54.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves54.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves55.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves55.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves56.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves56.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves57.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves57.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves58.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves58.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves59.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves59.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves6.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves6.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves60.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves60.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves61.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves61.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves62.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves62.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves63.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves63.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves64.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves64.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves65.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves65.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves66.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves66.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves67.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves67.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves68.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves68.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves69.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves69.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves7.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves7.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves70.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves70.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves71.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves71.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves72.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves72.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves73.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves73.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves74.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves74.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves75.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves75.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves76.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves76.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves77.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves77.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves78.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves78.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves79.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves79.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves8.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves8.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves80.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves80.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves81.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves81.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves82.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves82.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves83.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves83.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves84.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves84.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves85.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves85.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves86.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves86.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves87.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves87.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves88.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves88.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves89.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves89.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves9.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves9.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves90.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves90.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves91.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves91.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves92.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves92.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/M5/Leaves93.lean",
+   "new": "lean/triangle/Sqtri/Data/M5/Leaves93.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N2/All.lean",
+   "new": "lean/triangle/Sqtri/Data/N2/All.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N2/Base.lean",
+   "new": "lean/triangle/Sqtri/Data/N2/Base.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N2/Leaves0.lean",
+   "new": "lean/triangle/Sqtri/Data/N2/Leaves0.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N3/All.lean",
+   "new": "lean/triangle/Sqtri/Data/N3/All.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N3/Base.lean",
+   "new": "lean/triangle/Sqtri/Data/N3/Base.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N3/Leaves0.lean",
+   "new": "lean/triangle/Sqtri/Data/N3/Leaves0.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N3/Leaves1.lean",
+   "new": "lean/triangle/Sqtri/Data/N3/Leaves1.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N3/Leaves2.lean",
+   "new": "lean/triangle/Sqtri/Data/N3/Leaves2.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/All.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/All.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/Base.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/Base.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/Leaves0.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/Leaves0.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/Leaves1.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/Leaves1.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/Leaves2.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/Leaves2.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/Leaves3.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/Leaves3.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/Leaves4.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/Leaves4.lean"
+  },
+  {
+   "old": "lean/Sqtri/Data/N4/Leaves5.lean",
+   "new": "lean/triangle/Sqtri/Data/N4/Leaves5.lean"
+  },
+  {
+   "old": "lean/Sqtri/Evand.lean",
+   "new": "lean/triangle/Sqtri/Evand.lean"
+  },
+  {
+   "old": "lean/Sqtri/Geom.lean",
+   "new": "lean/triangle/Sqtri/Geom.lean"
+  },
+  {
+   "old": "lean/Sqtri/Main.lean",
+   "new": "lean/triangle/Sqtri/Main.lean"
+  },
+  {
+   "old": "lean/Sqtri/MinSide.lean",
+   "new": "lean/triangle/Sqtri/MinSide.lean"
+  },
+  {
+   "old": "lean/Sqtri/Poly.lean",
+   "new": "lean/triangle/Sqtri/Poly.lean"
+  },
+  {
+   "old": "lean/Sqtri/Series/M4.lean",
+   "new": "lean/triangle/Sqtri/Series/M4.lean"
+  },
+  {
+   "old": "lean/Sqtri/Series/M5.lean",
+   "new": "lean/triangle/Sqtri/Series/M5.lean"
+  },
+  {
+   "old": "lean/Sqtri/Series/M6.lean",
+   "new": "lean/triangle/Sqtri/Series/M6.lean"
+  },
+  {
+   "old": "lean/Sqtri/Series/M7.lean",
+   "new": "lean/triangle/Sqtri/Series/M7.lean"
+  },
+  {
+   "old": "lean/Sqtri/Series/M8.lean",
+   "new": "lean/triangle/Sqtri/Series/M8.lean"
+  },
+  {
+   "old": "lean/Sqtri/Series/M9.lean",
+   "new": "lean/triangle/Sqtri/Series/M9.lean"
+  },
+  {
+   "old": "lean/Sqtri/Upper.lean",
+   "new": "lean/triangle/Sqtri/Upper.lean"
+  },
+  {
+   "old": "lean/UPSTREAM-LICENSE.txt",
+   "new": "lean/triangle/UPSTREAM-LICENSE.txt"
+  },
+  {
+   "old": "lean/data/MANIFEST-M6.txt",
+   "new": "lean/triangle/data/MANIFEST-M6.txt"
+  },
+  {
+   "old": "lean/data/MANIFEST-M7.txt",
+   "new": "lean/triangle/data/MANIFEST-M7.txt"
+  },
+  {
+   "old": "lean/data/MANIFEST-M8.txt",
+   "new": "lean/triangle/data/MANIFEST-M8.txt"
+  },
+  {
+   "old": "lean/data/MANIFEST-M9.txt",
+   "new": "lean/triangle/data/MANIFEST-M9.txt"
+  },
+  {
+   "old": "lean/gen/cert.py",
+   "new": "lean/triangle/gen/cert.py"
+  },
+  {
+   "old": "lean/gen/emit.py",
+   "new": "lean/triangle/gen/emit.py"
+  },
+  {
+   "old": "lean/gen/emit2.py",
+   "new": "lean/triangle/gen/emit2.py"
+  },
+  {
+   "old": "lean/gen/out/n2.json",
+   "new": "lean/triangle/gen/out/n2.json"
+  },
+  {
+   "old": "lean/gen/out/n3.json",
+   "new": "lean/triangle/gen/out/n3.json"
+  },
+  {
+   "old": "lean/gen/out/n4.json",
+   "new": "lean/triangle/gen/out/n4.json"
+  },
+  {
+   "old": "lean/gen/q3.py",
+   "new": "lean/triangle/gen/q3.py"
+  },
+  {
+   "old": "lean/gen/repair.py",
+   "new": "lean/triangle/gen/repair.py"
+  },
+  {
+   "old": "lean/gen/series.py",
+   "new": "lean/triangle/gen/series.py"
+  },
+  {
+   "old": "lean/gen/tree.py",
+   "new": "lean/triangle/gen/tree.py"
+  },
+  {
+   "old": "lean/lake-manifest.json",
+   "new": "lean/triangle/lake-manifest.json"
+  },
+  {
+   "old": "lean/lakefile.toml",
+   "new": "lean/triangle/lakefile.toml"
+  },
+  {
+   "old": "lean/lean-toolchain",
+   "new": "lean/triangle/lean-toolchain"
+  },
+  {
+   "old": "lean/logs/axioms.txt",
+   "new": "lean/triangle/logs/axioms.txt"
+  },
+  {
+   "old": "lean/logs/axioms_series.txt",
+   "new": "lean/triangle/logs/axioms_series.txt"
+  },
+  {
+   "old": "lean/logs/build_clean.log",
+   "new": "lean/triangle/logs/build_clean.log"
+  },
+  {
+   "old": "lean/logs/series_leaf_build.txt",
+   "new": "lean/triangle/logs/series_leaf_build.txt"
+  },
+  {
+   "old": "lean/logs/series_m9_leaf_build.txt",
+   "new": "lean/triangle/logs/series_m9_leaf_build.txt"
+  },
+  {
+   "old": "lean/scripts/build_data.sh",
+   "new": "lean/triangle/scripts/build_data.sh"
+  },
+  {
+   "old": "lean/scripts/fetch_data.py",
+   "new": "lean/triangle/scripts/fetch_data.py"
+  },
+  {
+   "old": "tools/exact_random.py",
+   "new": "problems/triangle/tools/exact_random.py"
+  },
+  {
+   "old": "tools/float_probe.py",
+   "new": "problems/triangle/tools/float_probe.py"
+  },
+  {
+   "old": "tools/make_lattice_cert.py",
+   "new": "problems/triangle/tools/make_lattice_cert.py"
+  },
+  {
+   "old": "tools/n3_pinwheel.py",
+   "new": "problems/triangle/tools/n3_pinwheel.py"
+  },
+  {
+   "old": "tools/theta_profile.py",
+   "new": "problems/triangle/tools/theta_profile.py"
+  }
+ ],
+ "releases": [
+  {
+   "old_tag": "lean-data-v1",
+   "old_url": "https://github.com/wand125/squares-in-triangle/releases/tag/lean-data-v1",
+   "new_tag": null,
+   "mirror": "none (approved: keep the original release, referenced here)",
+   "note": "Lean data for n = 22, 29"
+  }
+ ]
+}
